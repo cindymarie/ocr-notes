@@ -27,11 +27,12 @@ public class HomeActivity extends Activity implements OnClickListener {
   public void onClick(View v) {
 	switch(v.getId()) {
 	  case R.id.button1:
-		HomeActivity.this.startActivity(new Intent(HomeActivity.this, CameraActivity.class));
+		startActivity(new Intent(HomeActivity.this, CameraActivity.class));
 		break;
 	  case R.id.button2:
 		break;
 	  case R.id.button3:
+		startActivity(new Intent(HomeActivity.this, AboutActivity.class));
 		break;
 	}
   }
