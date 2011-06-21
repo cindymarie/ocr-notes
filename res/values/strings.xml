@@ -5,4 +5,5 @@
   <string name="search_label">Search</string>
   <string name="about_label">About</string>
   <string name="about_content">This app is about STFU</string>
+  <string name="camera_button_label">Snap</string>
 </resources>
