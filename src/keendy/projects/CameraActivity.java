@@ -7,15 +7,21 @@ import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.SurfaceHolder.Callback;
+import android.view.View.OnKeyListener;
+import android.widget.LinearLayout;
 
 public class CameraActivity extends Activity implements Callback {
 
   private static final String TAG = "CAMERA ACTIVITY";
+  
+  private LinearLayout mLinearLayout;
   
   private SurfaceView mSurfaceView;
   private SurfaceHolder mSurfaceHolder;
@@ -39,6 +45,34 @@ public class CameraActivity extends Activity implements Callback {
     mSurfaceHolder = mSurfaceView.getHolder();
     mSurfaceHolder.addCallback(this);
     mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+    
+    mLinearLayout = (LinearLayout) findViewById(R.id.camera_layout);
+    
+    mLinearLayout.setOnKeyListener(new OnKeyListener() {
+    
+      @Override
+      public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+  	    if(keyEvent.getAction() == KeyEvent.ACTION_DOWN || 
+  		    keyEvent.getAction() == KeyEvent.ACTION_UP) {
+  	      switch(keyCode) {
+  	        case 80:
+  	          Log.i(TAG, "Pressed the camera button!");
+  	          return true;
+  	        case 19:
+  	          Log.i(TAG, "Left!");
+  	          return true;
+  	        default:
+  	          Log.i(TAG, "You pressed something");
+  	          return true;
+  	      }
+  	    }
+  	    return false;
+      }
+      
+    });
+    
+    mLinearLayout.setFocusable(true);
+    mLinearLayout.requestFocus();
     
     Log.i(TAG, "onCreated!");
   }
@@ -82,11 +116,26 @@ public class CameraActivity extends Activity implements Callback {
     Log.i(TAG, "surfaceDestroyed!");
   }
   
-  /** Picture Callback */
-  Camera.PictureCallback mPictureCallback = new Camera.PictureCallback() {
+  Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
+	@Override
+	public void onShutter() {
+	  // TODO Auto-generated method stub
+	  Log.i(TAG, "onShutterCallback!");
+	}	
+  };
+  
+  Camera.PictureCallback rawCallback = new Camera.PictureCallback() {
 	public void onPictureTaken(byte[] imageData, Camera c) {
 	  //TODO Handling of picture churva
-	    Log.i(TAG, "onPictureTaken!");
+	  Log.i(TAG, "onPictureTaken! RAW");
+	}	
+  };
+  
+  /** Picture Callback */
+  Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
+	public void onPictureTaken(byte[] imageData, Camera c) {
+	  //TODO Handling of picture churva
+	  Log.i(TAG, "onPictureTaken! JPEG");
 	}	
   };
 }
