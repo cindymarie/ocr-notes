@@ -11,8 +11,6 @@ import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.view.SurfaceHolder.Callback;
 import android.view.View.OnKeyListener;
 import android.widget.LinearLayout;
@@ -35,9 +33,6 @@ public class CameraActivity extends Activity implements Callback {
 	super.onCreate(savedInstanceState);
 	
     getWindow().setFormat(PixelFormat.TRANSLUCENT);
-    requestWindowFeature(Window.FEATURE_NO_TITLE);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-    WindowManager.LayoutParams.FLAG_FULLSCREEN);
     
     setContentView(R.layout.camera);
     
@@ -58,8 +53,11 @@ public class CameraActivity extends Activity implements Callback {
   	        case 80:
   	          Log.i(TAG, "Pressed the camera button!");
   	          return true;
-  	        case 19:
+  	        case 22:
   	          Log.i(TAG, "Left!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_BACK:
+  	          finish();
   	          return true;
   	        default:
   	          Log.i(TAG, "You pressed something");
