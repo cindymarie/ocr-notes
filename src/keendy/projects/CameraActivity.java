@@ -29,7 +29,7 @@ public class CameraActivity extends Activity implements Callback {
     requestWindowFeature(Window.FEATURE_NO_TITLE);
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
     WindowManager.LayoutParams.FLAG_FULLSCREEN);
-  
+    
     setContentView(R.layout.camera);
     
     mSurfaceView = (SurfaceView) findViewById(R.id.camera_surface);
@@ -39,6 +39,7 @@ public class CameraActivity extends Activity implements Callback {
     
   }
 
+  /** Activity is hardcoded to display in landscape, gwapo ko */
   @Override
   public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
 	
@@ -58,6 +59,7 @@ public class CameraActivity extends Activity implements Callback {
 
 	mCamera.startPreview();
 	mPreviewRunning = true;
+
   }
 
   @Override
