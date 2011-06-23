@@ -47,14 +47,22 @@ public class CameraActivity extends Activity implements Callback {
     
       @Override
       public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
-  	    if(keyEvent.getAction() == KeyEvent.ACTION_DOWN || 
-  		    keyEvent.getAction() == KeyEvent.ACTION_UP) {
+  	    if(keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
   	      switch(keyCode) {
-  	        case 80:
+  	        case KeyEvent.KEYCODE_CAMERA:
   	          Log.i(TAG, "Pressed the camera button!");
   	          return true;
-  	        case 22:
-  	          Log.i(TAG, "Left!");
+  	        case KeyEvent.KEYCODE_DPAD_UP:
+  	          Log.i(TAG, "You pressed DPAD Up!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_DPAD_LEFT:
+  	          Log.i(TAG, "You pressed DPAD Left!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_DPAD_RIGHT:
+  	          Log.i(TAG, "You pressed DPAD Right!");
+  	          return true;  	        
+  	        case KeyEvent.KEYCODE_DPAD_DOWN:
+  	          Log.i(TAG, "You pressed DPAD Down!");
   	          return true;
   	        case KeyEvent.KEYCODE_BACK:
   	          finish();
@@ -62,6 +70,13 @@ public class CameraActivity extends Activity implements Callback {
   	        default:
   	          Log.i(TAG, "You pressed something");
   	          return true;
+  	      }
+  	    }
+  	    if(keyEvent.getAction() == KeyEvent.ACTION_UP) {
+  	      switch(keyCode) {
+  	      case KeyEvent.KEYCODE_CAMERA:
+  	    	Log.i(TAG, "Released the camera button!");
+  	    	return true;
   	      }
   	    }
   	    return false;
@@ -93,6 +108,7 @@ public class CameraActivity extends Activity implements Callback {
 	  Log.e(TAG, "IOException lol");
 	}
 
+	mLinearLayout.requestFocus();
 	mCamera.startPreview();
 	mPreviewRunning = true;
 
