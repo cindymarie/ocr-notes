@@ -1,1 +1,10 @@
-A small Android project. Gwapa si Cindy.
+A small Android project done by relatively small people. The idea is to create an an app that let's you create and organize notes. The project consists of two major parts:
+
+The website
+The Android app
+
+User creates an account in the website using his facebook account.
+
+The Android app let's you take pictures, and using an OCR engine, it extracts text from the picture. You can also type the notes manually. Afterwhich, you are then given the option to make a PDF or txt file from the extracted text/text, and the option to upload it to your profile in the website. You can also download notes from your profile to your phone, in case you deleted your local copy.
+
+When the user visits the website and signs in with his account, he can view, edit, 
