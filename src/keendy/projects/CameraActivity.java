@@ -42,8 +42,8 @@ public class CameraActivity extends Activity implements Callback {
     
     //mLinearLayout = (LinearLayout) findViewById(R.id.camera_layout);
     
-    /*
-    mLinearLayout.setOnKeyListener(new OnKeyListener() {
+    
+    /*mLinearLayout.setOnKeyListener(new OnKeyListener() {
     
       @Override
       public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
