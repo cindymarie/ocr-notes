@@ -13,13 +13,12 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.SurfaceHolder.Callback;
 import android.view.View.OnKeyListener;
-import android.widget.LinearLayout;
 
 public class CameraActivity extends Activity implements Callback {
 
   private static final String TAG = "CAMERA ACTIVITY";
   
-  private LinearLayout mLinearLayout;
+  //private LinearLayout mLinearLayout;
   
   private SurfaceView mSurfaceView;
   private SurfaceHolder mSurfaceHolder;
@@ -41,8 +40,9 @@ public class CameraActivity extends Activity implements Callback {
     mSurfaceHolder.addCallback(this);
     mSurfaceHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
     
-    mLinearLayout = (LinearLayout) findViewById(R.id.camera_layout);
+    //mLinearLayout = (LinearLayout) findViewById(R.id.camera_layout);
     
+    /*
     mLinearLayout.setOnKeyListener(new OnKeyListener() {
     
       @Override
@@ -82,10 +82,56 @@ public class CameraActivity extends Activity implements Callback {
   	    return false;
       }
       
+    });*/
+    
+    mSurfaceView.setOnKeyListener(new OnKeyListener() {
+      
+      @Override
+      public boolean onKey(View view, int keyCode, KeyEvent keyEvent) {
+  	    if(keyEvent.getAction() == KeyEvent.ACTION_DOWN) {
+  	      switch(keyCode) {
+  	        case KeyEvent.KEYCODE_CAMERA:
+  	          Log.i(TAG, "Pressed the camera button!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_DPAD_UP:
+  	          Log.i(TAG, "You pressed DPAD Up!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_DPAD_LEFT:
+  	          Log.i(TAG, "You pressed DPAD Left!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_DPAD_RIGHT:
+  	          Log.i(TAG, "You pressed DPAD Right!");
+  	          return true;  	        
+  	        case KeyEvent.KEYCODE_DPAD_DOWN:
+  	          Log.i(TAG, "You pressed DPAD Down!");
+  	          return true;
+  	        case KeyEvent.KEYCODE_BACK:
+  	          finish();
+  	          return true;
+  	        default:
+  	          Log.i(TAG, "You pressed something");
+  	          return true;
+  	      }
+  	    }
+  	    if(keyEvent.getAction() == KeyEvent.ACTION_UP) {
+  	      switch(keyCode) {
+  	      case KeyEvent.KEYCODE_CAMERA:
+  	    	Log.i(TAG, "Released the camera button!");
+  	    	return true;
+  	      }
+  	    }
+  	    return false;
+      }
+      
     });
     
+    /*
     mLinearLayout.setFocusable(true);
     mLinearLayout.requestFocus();
+    */
+    
+    mSurfaceView.setFocusable(true);
+    mSurfaceView.requestFocus();
     
     Log.i(TAG, "onCreated!");
   }
@@ -108,7 +154,6 @@ public class CameraActivity extends Activity implements Callback {
 	  Log.e(TAG, "IOException lol");
 	}
 
-	mLinearLayout.requestFocus();
 	mCamera.startPreview();
 	mPreviewRunning = true;
 
@@ -133,7 +178,7 @@ public class CameraActivity extends Activity implements Callback {
   Camera.ShutterCallback shutterCallback = new Camera.ShutterCallback() {
 	@Override
 	public void onShutter() {
-	  // TODO Auto-generated method stub
+	  // TODO Shutter Callback
 	  Log.i(TAG, "onShutterCallback!");
 	}	
   };
