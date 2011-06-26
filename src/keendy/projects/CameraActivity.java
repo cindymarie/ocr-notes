@@ -1,11 +1,16 @@
 package keendy.projects;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore.Images.Media;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -13,6 +18,7 @@ import android.view.View;
 import android.view.SurfaceHolder.Callback;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class CameraActivity extends Activity implements Callback { 
 
@@ -22,6 +28,8 @@ public class CameraActivity extends Activity implements Callback {
   private SurfaceHolder mSurfaceHolder;
   
   private ImageButton mImageButton;
+  
+  private LinearLayout mLinearLayout;
   
   private Camera mCamera;
   
@@ -34,6 +42,8 @@ public class CameraActivity extends Activity implements Callback {
     getWindow().setFormat(PixelFormat.TRANSLUCENT);
     
     setContentView(R.layout.camera);
+    
+    mLinearLayout = (LinearLayout) findViewById(R.id.camera_linear_layout);
     
     mSurfaceView = (SurfaceView) findViewById(R.id.camera_surface);
     mSurfaceHolder = mSurfaceView.getHolder();
@@ -48,11 +58,13 @@ public class CameraActivity extends Activity implements Callback {
 	  public void onClick(View view) {
 		Log.i(TAG, "Class Name: " + view.getClass().getName());
 		Log.i(TAG, "View ID: " + view.getId());
+		if(view.getId() == mImageButton.getId())
+		  mCamera.takePicture(null, null, jpegCallback);
 	  }
     
     });
     
-   Log.i(TAG, "onCreated!");
+    Log.i(TAG, "onCreated!");
   }
 
   @Override
@@ -92,4 +104,33 @@ public class CameraActivity extends Activity implements Callback {
 
     Log.i(TAG, "surfaceDestroyed!");
   }
+
+  /** Picture Callback */
+  Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
+    public void onPictureTaken(byte[] imageData, Camera c) {
+      
+	  Uri imageFileUri =
+	    getContentResolver().insert(Media.EXTERNAL_CONTENT_URI, 
+		    new ContentValues());
+	  
+	  try {
+	    OutputStream imageFileOS = 
+	      getContentResolver().openOutputStream(imageFileUri);
+	    
+	    imageFileOS.write(imageData);
+	    imageFileOS.flush();
+	    imageFileOS.close();
+	    
+	  } catch (FileNotFoundException e) {
+	    Log.e(TAG, "File not found!");
+	  } catch (IOException e) {
+	    Log.e(TAG, "IOException!");
+	  }
+	    
+	  mLinearLayout.setVisibility(View.INVISIBLE);
+	  
+      Log.i(TAG, imageFileUri.getPath());
+      
+   }  
+  }; 
 }
