@@ -127,11 +127,9 @@ public class CameraActivity extends Activity implements Callback {
     
     /*
     mLinearLayout.setFocusable(true);
-    mLinearLayout.requestFocus();
     */
     
     mSurfaceView.setFocusable(true);
-    mSurfaceView.requestFocus();
     
     Log.i(TAG, "onCreated!");
   }
