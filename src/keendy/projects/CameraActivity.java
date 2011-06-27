@@ -3,7 +3,6 @@ package keendy.projects;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
-
 import android.app.Activity;
 import android.content.ContentValues;
 import android.graphics.PixelFormat;
@@ -19,6 +18,7 @@ import android.view.SurfaceHolder.Callback;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class CameraActivity extends Activity implements Callback { 
 
@@ -128,6 +128,9 @@ public class CameraActivity extends Activity implements Callback {
 	  }
 	    
 	  mLinearLayout.setVisibility(View.INVISIBLE);
+	  
+	  Toast.makeText(CameraActivity.this, imageFileUri.getPath(), 
+		  Toast.LENGTH_SHORT).show();
 	  
       Log.i(TAG, imageFileUri.getPath());
       
