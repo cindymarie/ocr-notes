@@ -29,7 +29,9 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
   private ImageButton mImageButton;
 
+  //layout container for the camera snap button
   private LinearLayout mLinearLayout;
+  //layout container for the camera label
   private LinearLayout mLinearLayout2;
 
   private Camera mCamera;
