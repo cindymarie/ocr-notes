@@ -6,4 +6,5 @@
   <string name="about_label">About</string>
   <string name="about_text">This app is about STFU</string>
   <string name="camera_button_label">Snap</string>
+  <string name="camera_label">Take a screenshot</string>
 </resources>
