@@ -1,145 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:layout_gravity="bottom"
-    android:background="#FFFFFF">
-
+<LinearLayout 
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical"
+  android:layout_gravity="bottom"
+  android:background="#FFFFFF">
     <LinearLayout
-    	android:id="@+id/TopRow"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:background="@drawable/menu_background_firstrow">
-        
+      android:id="@+id/TopRow"
+      android:layout_height="wrap_content"
+      android:layout_width="fill_parent"
+      android:orientation="horizontal"
+      android:background="@drawable/menu_background_firstrow">  
         <ImageView
-        	android:id="@+id/logo"
-        	android:src="@drawable/ic_logo_dudenotes"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_gravity="left">
-        </ImageView>
-        
+          android:id="@+id/logo"
+          android:src="@drawable/ic_logo_dudenotes"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_gravity="left">
+        </ImageView>        
     	<TextView
-    		android:text="This is User Name."
-    		android:id="@+id/home_userName"
-			android:textColor="#973d00"
-    		android:textStyle="bold"
-			android:gravity="right"
-    		android:layout_gravity="center_vertical"
-			android:paddingTop="10dp"
-    		android:paddingBottom="10dp" 
-    		android:paddingRight="10dp" 
-    		android:layout_width="fill_parent"
-    		android:layout_height="wrap_content"
-    		android:layout_weight="1"
-            />
+    	  android:text="This is User Name."
+    	  android:id="@+id/home_userName"
+		  android:textColor="#973d00"
+    	  android:textStyle="bold"
+		  android:gravity="right"
+    	  android:layout_gravity="center_vertical"
+		  android:paddingTop="10dp"
+    	  android:paddingBottom="10dp" 
+    	  android:paddingRight="10dp" 
+    	  android:layout_width="fill_parent"
+    	  android:layout_height="wrap_content"
+    	  android:layout_weight="1" />
     </LinearLayout>
-    
     <LinearLayout
-        android:id="@+id/MiddleSecond"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:layout_weight="2"
-        android:orientation="horizontal"       
-        android:padding="5dp"
-        android:gravity="center|center_vertical" 	
-    	android:layout_gravity="center_vertical|center_horizontal|center"
-    	android:background="@drawable/menu_background_thirdrow_white" >
-
-	<LinearLayout android:layout_weight="2" android:layout_gravity="center_vertical|center_horizontal|center" android:layout_height="fill_parent" android:id="@+id/MiddleFirstCol" android:layout_width="fill_parent" android:orientation="vertical" android:padding="5dp" android:gravity="center|center_vertical"><Button android:id="@+id/home_myNotebook" android:text="My Notebook" android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="wrap_content" android:onClick="onClickLoadNotes" android:background="@android:color/transparent" android:paddingBottom="5dp" android:drawableTop="@drawable/ic_menu_notebook" android:textColor="#973d00"></Button>
-<Button android:id="@+id/home_bulletin" android:text="Bulletin" android:layout_height="wrap_content" android:textStyle="bold" android:layout_width="wrap_content" android:onClick="onClickBulletin" android:background="@android:color/transparent" android:drawableTop="@drawable/ic_menu_bulletin" android:textColor="#973d00" android:paddingTop="5dp"></Button>
-</LinearLayout>
-	
-	<LinearLayout
-        android:id="@+id/MiddleFirstCol"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:layout_weight="2"
-        android:orientation="vertical"       
-        android:padding="5px"
-        android:gravity="center|center_vertical" 	
-    	android:layout_gravity="center_vertical|center_horizontal|center">
-        
-        <Button
-	        android:id="@+id/home_captureNote"
-	        android:background="@android:color/transparent"
-        	android:drawableTop="@drawable/ic_menu_camera"
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:paddingBottom="5dp"
-	    	android:text="Capture"
-	    	android:textColor="#973d00"
-	    	android:textStyle="bold"
-	    	android:onClick="onClickCaptureNote">
-        </Button>
-        
-        <Button
-	        android:id="@+id/home_writeNote"
-	        android:background="@android:color/transparent"
-        	android:drawableTop="@drawable/ic_menu_writenote"
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:paddingTop="5dp"
-	    	android:onClick="onClickWriteNote"
-			android:text="Write"
-			android:textStyle="bold"
-			android:textColor="#973d00">
-        </Button>
-        </LinearLayout>
-        
-        <LinearLayout
-	        android:id="@+id/MiddleSecondCol"
-	        android:layout_height="fill_parent"
-	        android:layout_width="fill_parent"
-	        android:layout_weight="2"
-	        android:orientation="vertical"       
-	        android:padding="5px"
-	        android:gravity="center|center_vertical" 	
-	    	android:layout_gravity="center_vertical|center_horizontal|center">
-        
-        <Button
-	        android:id="@+id/home_textNote"
-	        android:background="@android:color/transparent"
-        	android:drawableTop="@drawable/ic_menu_textnote"
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:paddingBottom="5dp"
-	    	android:text="Text"
-	    	android:textStyle="bold"
-			android:textColor="#973d00"
-	    	android:onClick="onClickWalaPa">
-        </Button>
-        
-        <Button
-	        android:id="@+id/home_about"
-	        android:background="@android:color/transparent"
-        	android:drawableTop="@drawable/ic_menu_about"
-	        android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:paddingTop="5dp"
-	    	android:text="About"
-	    	android:textStyle="bold"
-			android:textColor="#973d00"
-	    	android:onClick="onClickAbout">
-        </Button>
-                
-        </LinearLayout>
-        
-        
-    
-</LinearLayout>
-    
-    
-    
-    <LinearLayout
-    	android:id="@+id/BottomRow"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        android:paddingTop="10dp"
-        android:background="@drawable/menu_background_firstrow">
-    </LinearLayout>
+      android:id="@+id/MiddleSecond"
+      android:layout_height="wrap_content"
+      android:layout_width="fill_parent"
+      android:layout_weight="2"
+      android:orientation="horizontal"       
+      android:padding="5dp"
+      android:gravity="center|center_vertical" 	
+      android:layout_gravity="center_vertical|center_horizontal|center"
+      android:background="@drawable/menu_background_thirdrow_white" >
+		<LinearLayout 
+		  android:layout_weight="2" 
+		  android:layout_gravity="center_vertical|center_horizontal|center" 
+		  android:layout_height="fill_parent" 
+		  android:id="@+id/MiddleFirstCol" 
+		  android:layout_width="fill_parent" android:orientation="vertical" 
+		  android:padding="5dp" android:gravity="center|center_vertical">	  
+	  		<Button 
+	  		  android:id="@+id/home_myNotebook" 
+	  		  android:text="My Notebook" 
+	  		  android:layout_height="wrap_content" 
+	  		  android:textStyle="bold" 
+	  		  android:layout_width="wrap_content" 	  		   
+	  		  android:background="@android:color/transparent" 
+	  		  android:paddingBottom="5dp" 
+	  		  android:drawableTop="@drawable/ic_menu_notebook" 
+	  		  android:textColor="#973d00">
+	  		</Button>
+			<Button 
+			  android:id="@+id/home_bulletin" 
+			  android:text="Bulletin" 
+			  android:layout_height="wrap_content" 
+			  android:textStyle="bold" 
+			  android:layout_width="wrap_content" 			  
+			  android:background="@android:color/transparent" 
+			  android:drawableTop="@drawable/ic_menu_bulletin" 
+			  android:textColor="#973d00" 
+			  android:paddingTop="5dp">
+			</Button>
+		</LinearLayout>
+		<LinearLayout
+	      android:id="@+id/MiddleFirstCol"
+	      android:layout_height="fill_parent"
+	      android:layout_width="fill_parent"
+	      android:layout_weight="2"
+	      android:orientation="vertical"       
+	      android:padding="5px"
+	      android:gravity="center|center_vertical" 	
+	      android:layout_gravity="center_vertical|center_horizontal|center">        
+	        <Button
+		      android:id="@+id/home_captureNote"
+		      android:background="@android:color/transparent"
+	          android:drawableTop="@drawable/ic_menu_camera"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:paddingBottom="5dp"
+		      android:text="Capture"
+		      android:textColor="#973d00"
+		      android:textStyle="bold" >
+	        </Button>
+	        <Button
+		      android:id="@+id/home_writeNote"
+		      android:background="@android:color/transparent"
+	          android:drawableTop="@drawable/ic_menu_writenote"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:paddingTop="5dp"
+		      
+			  android:text="Write"
+			  android:textStyle="bold"
+			  android:textColor="#973d00">
+	        </Button>
+	    </LinearLayout>        
+	    <LinearLayout
+		  android:id="@+id/MiddleSecondCol"
+		  android:layout_height="fill_parent"
+	      android:layout_width="fill_parent"
+	      android:layout_weight="2"
+	      android:orientation="vertical"       
+	      android:padding="5px"
+	      android:gravity="center|center_vertical" 	
+	   	  android:layout_gravity="center_vertical|center_horizontal|center">        
+	        <Button
+	          android:id="@+id/home_textNote"
+	          android:background="@android:color/transparent"
+	       	  android:drawableTop="@drawable/ic_menu_textnote"
+	          android:layout_width="wrap_content"
+	    	  android:layout_height="wrap_content"
+	    	  android:paddingBottom="5dp"
+	    	  android:text="Text"
+	    	  android:textStyle="bold"
+			  android:textColor="#973d00" >
+	        </Button>        
+	        <Button
+	          android:id="@+id/home_about"
+	          android:background="@android:color/transparent"
+	       	  android:drawableTop="@drawable/ic_menu_about"
+	          android:layout_width="wrap_content"
+	    	  android:layout_height="wrap_content"
+	    	  android:paddingTop="5dp"
+	    	  android:text="About"
+	    	  android:textStyle="bold"
+			  android:textColor="#973d00" >
+	        </Button>        
+	    </LinearLayout>  
+  </LinearLayout>
+  <LinearLayout
+   	android:id="@+id/BottomRow"
+    android:layout_height="wrap_content"
+    android:layout_width="fill_parent"
+    android:orientation="horizontal"
+    android:layout_gravity="bottom"
+    android:paddingTop="10dp"
+    android:background="@drawable/menu_background_firstrow">
+  </LinearLayout>
 </LinearLayout>

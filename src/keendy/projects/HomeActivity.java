@@ -14,24 +14,21 @@ public class HomeActivity extends Activity implements OnClickListener {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.home);
     
-    /** Initialize Buttons */
-    View snapButton = findViewById(R.id.button1);
-    snapButton.setOnClickListener(this);
-    View searchButton = findViewById(R.id.button2);
-    searchButton.setOnClickListener(this);
-    View aboutButton = findViewById(R.id.button3);
+    /** Initialize Buttons */    
+    View captureNote = findViewById(R.id.home_captureNote);
+    captureNote.setOnClickListener(this);
+    View aboutButton = findViewById(R.id.home_about);
     aboutButton.setOnClickListener(this);
+    
   }
 
   @Override
   public void onClick(View v) {
 	switch(v.getId()) {
-	  case R.id.button1:
+	  case R.id.home_captureNote:
 		startActivity(new Intent(HomeActivity.this, CameraActivity.class));
 		break;
-	  case R.id.button2:
-		break;
-	  case R.id.button3:
+	  case R.id.home_about:
 		startActivity(new Intent(HomeActivity.this, AboutActivity.class));
 		break;
 	}

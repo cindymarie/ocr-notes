@@ -33,7 +33,7 @@
       android:layout_gravity="bottom"
       android:gravity="right" >
 	    <ImageButton
-          android:src="@drawable/ok"
+          android:src="@android:drawable/ic_menu_camera"
           android:layout_height="wrap_content"
           android:layout_width="wrap_content" 
           android:id="@+id/camera_button" >
