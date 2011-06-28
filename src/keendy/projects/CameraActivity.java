@@ -39,9 +39,7 @@ public class CameraActivity extends Activity implements Callback {
   public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
 	
-    getWindow().setFormat(PixelFormat.TRANSLUCENT);
-    
-    setContentView(R.layout.camera);
+    getWindow().setFormat(PixelFormat.TRANSLUCENT);    
     
     mLinearLayout = (LinearLayout) findViewById(R.id.camera_linear_layout);
     
@@ -63,6 +61,8 @@ public class CameraActivity extends Activity implements Callback {
 	  }
     
     });
+    
+    setContentView(R.layout.camera);
     
     Log.i(TAG, "onCreated!");
   }

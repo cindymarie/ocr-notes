@@ -3,29 +3,29 @@
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:orientation="horizontal"
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent" >
+  android:layout_height="fill_parent" 
+  android:gravity="center">
     <TableLayout
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:layout_gravity="center"
-      android:stretchColumns="*" >
+      android:layout_gravity="center" >
     <Button 
       android:text="@string/snap_label"
    	  android:id="@+id/button1" 
-      android:layout_width="fill_parent" 
-      android:layout_height="wrap_content">
+      android:layout_width="200px" 
+      android:layout_height="50px">
     </Button>
     <Button 
       android:text="@string/search_label"
       android:id="@+id/button2"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content">
+      android:layout_width="200px"
+      android:layout_height="50px">
     </Button>
     <Button
       android:text="@string/about_label"
       android:id="@+id/button3"
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content">
+      android:layout_width="200px"
+      android:layout_height="50px">
     </Button>
     </TableLayout>
 </LinearLayout>
