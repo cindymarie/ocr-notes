@@ -1,5 +1,6 @@
-package keendy.projects;
+package com.main;
 
+import keendy.projects.R;
 import android.app.Activity;
 import android.os.Bundle;
 

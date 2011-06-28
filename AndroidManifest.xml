@@ -5,7 +5,7 @@
   android:versionCode="1"
   android:versionName="1.0">
   
-    <uses-sdk android:minSdkVersion="7" />
+    <uses-sdk android:minSdkVersion="4" />
     
     <uses-permission android:name="android.permission.CAMERA"/>
 	
@@ -15,7 +15,7 @@
       android:debuggable="true">
     
         <activity 
-          android:name=".HomeActivity"
+          android:name="com.main.HomeActivity"
           android:label="@string/app_name">
             <intent-filter>
               <action android:name="android.intent.action.MAIN" />
@@ -24,14 +24,14 @@
         </activity>
         
         <activity 
-          android:name=".CameraActivity"
+          android:name="com.camera.CameraActivity"
           android:label="@string/app_name"
           android:screenOrientation="landscape"
           android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
    
    		<activity
-   		  android:name=".AboutActivity"
+   		  android:name="com.main.AboutActivity"
    		  android:label="@string/about_label"
    		  android:theme="@android:style/Theme.Dialog">
    		</activity>

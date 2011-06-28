@@ -1,8 +1,9 @@
-package keendy.projects;
+package com.camera;
 
 import java.io.IOException;
 import java.io.OutputStream;
 
+import keendy.projects.R;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.graphics.PixelFormat;
@@ -29,6 +30,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
   private ImageButton mImageButton;
 
   private LinearLayout mLinearLayout;
+  private LinearLayout mLinearLayout2;
 
   private Camera mCamera;
 
@@ -40,8 +42,13 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
 	getWindow().setFormat(PixelFormat.TRANSLUCENT);
 
+	setContentView(R.layout.camera);
+	
 	mLinearLayout = 
 	    (LinearLayout) findViewById(R.id.camera_linear_layout_button);
+	
+	mLinearLayout2 =
+	  	(LinearLayout) findViewById(R.id.camera_linear_layout_label);
 
 	mSurfaceView = (SurfaceView) findViewById(R.id.camera_surface);
 	mSurfaceHolder = mSurfaceView.getHolder();
@@ -53,14 +60,12 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 	mImageButton.setOnClickListener(new OnClickListener() {
 	  @Override
 	  public void onClick(View view) {
-		Log.i(TAG, "Class Name: " + view.getClass().getName());
-		Log.i(TAG, "View ID: " + view.getId());
 		if (view.getId() == mImageButton.getId())
 		  mCamera.takePicture(null, null, jpegCallback);
 	  }
 	});
 
-	setContentView(R.layout.camera);
+	
 
 	Log.i(TAG, "onCreated!");
   }
@@ -123,6 +128,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 	  }
 
 	  mLinearLayout.setVisibility(View.INVISIBLE);
+	  mLinearLayout2.setVisibility(View.INVISIBLE);
 
 	  Toast.makeText(CameraActivity.this, imageFileUri.getPath(),
 		  Toast.LENGTH_SHORT).show();
