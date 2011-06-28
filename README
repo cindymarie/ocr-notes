@@ -1,22 +1,13 @@
-A small Android project done by relatively small people. The idea is to create an an app that let's
- you create and organize notes. The project consists of two major parts:
+I hate writing readmes...
 
-The website
-The Android app
+So we're making this OCR app for Android that let's you take snapshots of your
+notes, edit them, save them, upload them to the web.
 
-User creates an account in the website using his facebook account.
+So this project consists of:
 
-The Android app let's you take pictures, and using an OCR engine, it extracts text from the picture.
-You can also type the notes manually. Afterwhich, you are then given the option to make a PDF or
-txt file from the extracted text/text, and the option to upload it to your profile in the website.
-You can also download notes from your profile to your phone, in case you deleted your local copy
-(phone copy).
+The Android app itself
+and the website
 
-When the user signs in through the website, he can view, edit, and comment on his notes.
-
-The website will be written in Ruby on Rails with SQLite as the backend db for easy data transfer
-between the phone and the site.
-
-We will (most likely) be using Aspire OCR engine. (Best documentation so far)
-
-Git for version control.
+We will be developing the OCR engine from scratch, it's a massive undertaking
+for amateur developers such as ourselves, but hey, we're programmers, and we
+find programming fun!
