@@ -12,7 +12,7 @@ public class HomeActivity extends Activity implements OnClickListener {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.main);
+    setContentView(R.layout.home);
     
     /** Initialize Buttons */
     View snapButton = findViewById(R.id.button1);
