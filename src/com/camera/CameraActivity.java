@@ -2,12 +2,12 @@ package com.camera;
 
 import java.io.IOException;
 import java.io.OutputStream;
-
 import keendy.projects.R;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.graphics.PixelFormat;
 import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore.Images.Media;
@@ -34,6 +34,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
   //layout container for the camera label
   private LinearLayout mLinearLayout2;
 
+  //Camera variables
   private Camera mCamera;
 
   private boolean mPreviewRunning = false;
@@ -62,12 +63,15 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 	mImageButton.setOnClickListener(new OnClickListener() {
 	  @Override
 	  public void onClick(View view) {
-		if (view.getId() == mImageButton.getId())
-		  mCamera.takePicture(null, null, jpegCallback);
+		if (view.getId() == mImageButton.getId()) {
+		  synchronized(this) {
+    		mCamera.autoFocus(AFocusCallback);
+    		mCamera.takePicture(null, null, jpegCallback);
+		  }
+		}
 	  }
+	  
 	});
-
-	
 
 	Log.i(TAG, "onCreated!");
   }
@@ -139,4 +143,12 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
 	}
   };
+  
+  AutoFocusCallback AFocusCallback = new AutoFocusCallback() {
+	  @Override
+	  public void onAutoFocus(boolean success, Camera camera) {
+		Log.i(TAG, "Focused!");
+	  }
+	};
+  
 }
