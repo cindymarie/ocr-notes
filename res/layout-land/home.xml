@@ -11,7 +11,7 @@
       android:layout_height="wrap_content"
       android:layout_width="fill_parent"
       android:orientation="horizontal"
-      android:background="@drawable/menu_background_firstrow">  
+      android:background="@drawable/menu_bg_01">  
         <ImageView
           android:id="@+id/logo"
           android:src="@drawable/ic_logo_dudenotes"
@@ -146,6 +146,6 @@
     android:orientation="horizontal"
     android:layout_gravity="bottom"
     android:paddingTop="10dp"
-    android:background="@drawable/menu_background_firstrow">
+    android:background="@drawable/menu_bg_01">
   </LinearLayout>
 </LinearLayout>
