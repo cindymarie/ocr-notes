@@ -2,6 +2,7 @@ package com.camera;
 
 import java.io.IOException;
 import java.io.OutputStream;
+
 import keendy.projects.R;
 import android.app.Activity;
 import android.content.ContentValues;
@@ -70,9 +71,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 		  }
 		}
 	  }
-	  
 	});
-
 	Log.i(TAG, "onCreated!");
   }
 
