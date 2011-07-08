@@ -65,12 +65,12 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 	  public void onClick(View view) {
 		if (view.getId() == mImageButton.getId()) {
 		  synchronized(this) {
+			
     		mCamera.autoFocus(AFocusCallback);
     		mCamera.takePicture(null, null, jpegCallback);
 		  }
 		}
 	  }
-	  
 	});
 
 	Log.i(TAG, "onCreated!");
