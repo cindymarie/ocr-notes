@@ -9,7 +9,6 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Database for PLUG Notes
  * TODO Create CRUD methods
  */
-
 public class DatabaseAdapter {
 
   /** Columns for Subjects Table */
@@ -46,7 +45,9 @@ public class DatabaseAdapter {
 	DBHelper = new DatabaseHelper(this.context);
   }
   
-  /** SQLite Database Helper for Creating and Upgrading the Database */
+  /*
+   * Database Helper for SQLite; opening ang closing
+   */
   private static class DatabaseHelper extends SQLiteOpenHelper {
 	
 	DatabaseHelper(Context context ) {
