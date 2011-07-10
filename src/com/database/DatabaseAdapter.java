@@ -5,17 +5,17 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-/*
+/**
  * Database for PLUG Notes
  * TODO Create CRUD methods
  */
 public class DatabaseAdapter {
 
-  /** Columns for Subjects Table */
+  /* Columns for Subjects Table */
   public static final String KEY_TABLE_ID = "_id";
   public static final String KEY_TABLE_TITLE = "title";
   
-  /** Columns for Notes Table  */
+  /* Columns for Notes Table  */
   public static final String KEY_NOTE_ID = "_id";
   public static final String KEY_NOTE_TITLE = "title";
   public static final String KEY_NOTE_CONTENT = "content";
@@ -23,22 +23,26 @@ public class DatabaseAdapter {
   private static final String TAG = "DBHelper";
   
   public static final String DATABASE_NAME = "plug_database";
-  public static final String DATABASE_TABLE_NOTE = "note";
-  public static final String DATABASE_TABLE_SUBJECT = "subject";
+  public static final String DATABASE_TABLE_NOTE = "notes";
+  public static final String DATABASE_TABLE_SUBJECT = "subjects";
   private static final int DATABASE_VERSION = 1;
   
   private static final String DATABASE_CREATE_SUBJECT = 
-	"CREATE TABLE subject (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	"CREATE TABLE subjects (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 	"title TEXT NOT NULL);";
   
   private static final String DATABASE_CREATE_NOTE = 
-	"CREATE TABLE note (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	"CREATE TABLE notes (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 	"title TEXT NOT NULL, content TEXT NOT NULL)" +
-	"FOREIGN KEY(subject_id) REFERENCES subject(_id);";
+	"FOREIGN KEY(subject_id) REFERENCES subjects(_id);";
+  
+  private static final String[] DATABASE_CREATE_TABLES = {
+	DATABASE_CREATE_SUBJECT, DATABASE_CREATE_NOTE};
+  
   
   private final Context context;
   private DatabaseHelper DBHelper;
-  private SQLiteDatabase db;
+  private SQLiteDatabase plugDB;
  
   public DatabaseAdapter(Context context) {
 	this.context = context;
@@ -56,20 +60,21 @@ public class DatabaseAdapter {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-	  db.execSQL(DATABASE_CREATE_SUBJECT + DATABASE_CREATE_NOTE);
+	  for(String sql : DATABASE_CREATE_TABLES)
+		db.execSQL(sql);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-	  db.execSQL("DROP TABLE IF EXISTS subject;");
-	  db.execSQL("DROP TABLE IF EXISTS note;");
+	  db.execSQL("DROP TABLE IF EXISTS subjects;");
+	  db.execSQL("DROP TABLE IF EXISTS notes;");
 	  onCreate(db);
 	}
 	
   }
   
   public DatabaseAdapter open () throws SQLException {
-	db = DBHelper.getWritableDatabase();
+	plugDB = DBHelper.getWritableDatabase();
 	return this;
   }
   

@@ -21,6 +21,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+/**
+ * Camera Activity that handles all callbacks, button presses during the camera
+ * preview 
+ * 
+ * TODO Implement a better AutoFocus and PictureCallback feature
+ */
 public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
   private static final String TAG = "CAMERA ACTIVITY";
@@ -30,12 +36,12 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 
   private ImageButton mImageButton;
 
-  //layout container for the camera snap button
+  /* layout container for the camera snap button */
   private LinearLayout mLinearLayout;
-  //layout container for the camera label
+  /* layout container for the camera label */
   private LinearLayout mLinearLayout2;
 
-  //Camera variables
+  /* Camera variables */
   private Camera mCamera;
 
   private boolean mPreviewRunning = false;
@@ -114,7 +120,7 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 	Log.i(TAG, "surfaceDestroyed!");
   }
 
-  /** Picture Callback */
+  /* Picture Callback */
   Camera.PictureCallback jpegCallback = new Camera.PictureCallback() {
 	public void onPictureTaken(byte[] imageData, Camera c) {
 

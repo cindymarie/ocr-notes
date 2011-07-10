@@ -9,15 +9,19 @@ import android.view.View.OnClickListener;
 
 import com.camera.CameraActivity;
 
+/**
+ * HomeActivity that handles all key presses during home view 
+ * TODO Implement all onClick features
+ */
 public class HomeActivity extends Activity implements OnClickListener {
   
-  /** Called when the activity is first created. */
+  /* Called when the activity is first created. */
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.home);
     
-    /** Initialize Buttons */    
+    /* Initialize Buttons */    
     View captureNote = findViewById(R.id.home_captureNote);
     captureNote.setOnClickListener(this);
     View aboutButton = findViewById(R.id.home_about);
