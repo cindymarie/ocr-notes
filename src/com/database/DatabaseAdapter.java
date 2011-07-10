@@ -1,6 +1,8 @@
 package com.database;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -33,8 +35,7 @@ public class DatabaseAdapter {
   
   private static final String DATABASE_CREATE_NOTE = 
 	"CREATE TABLE notes (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-	"title TEXT NOT NULL, content TEXT NOT NULL)" +
-	"FOREIGN KEY(subject_id) REFERENCES subjects(_id);";
+	"title TEXT NOT NULL, content TEXT NOT NULL, subject_id INTEGER);"; 
   
   private static final String[] DATABASE_CREATE_TABLES = {
 	DATABASE_CREATE_SUBJECT, DATABASE_CREATE_NOTE};
@@ -71,6 +72,17 @@ public class DatabaseAdapter {
 	  onCreate(db);
 	}
 	
+	@Override
+	public void onOpen(SQLiteDatabase db)
+	{
+	  super.onOpen(db);
+	  if (!db.isReadOnly())
+	  {
+	    // Enable foreign key constraints
+	    db.execSQL("PRAGMA foreign_keys=ON;");
+	  }
+	}
+	
   }
   
   public DatabaseAdapter open () throws SQLException {
@@ -80,5 +92,36 @@ public class DatabaseAdapter {
   
   public void close() {
 	DBHelper.close();
+  }
+  
+  public long createNote(String title, String content, int subject_id) {
+	ContentValues cv = new ContentValues();
+	cv.put(KEY_NOTE_TITLE, title);
+	cv.put(KEY_NOTE_CONTENT, content);
+	cv.put(KEY_NOTE_SUBJECT, subject_id);
+	
+	return plugDB.insert(DATABASE_TABLE_NOTE, null, cv); 
+  }  
+  
+  public long createNote(String title, String content) {
+	ContentValues cv = new ContentValues();
+	cv.put(KEY_NOTE_TITLE, title);
+	cv.put(KEY_NOTE_CONTENT, content);
+	
+	return plugDB.insert(DATABASE_TABLE_NOTE, null, cv); 
+  } 
+  
+  public Cursor getNotes() {
+	return plugDB.query(DATABASE_TABLE_NOTE, new String[] {
+		KEY_NOTE_ID, 
+		KEY_NOTE_TITLE, 
+		KEY_NOTE_CONTENT, 
+		KEY_NOTE_SUBJECT
+		},
+		null,
+		null,
+		null,
+		null,
+		null);
   }
 }
