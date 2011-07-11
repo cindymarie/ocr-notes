@@ -3,11 +3,9 @@ package com.main;
 import keendy.projects.R;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Toast;
 
 import com.camera.CameraActivity;
 import com.database.DatabaseAdapter;
@@ -33,13 +31,7 @@ public class HomeActivity extends Activity implements OnClickListener {
     View aboutButton = findViewById(R.id.home_about);
     aboutButton.setOnClickListener(this);
     
-    database.open();
-    long id;
-    database.createNote("Android Pro 2", "This is a book for pros like me");
-    Cursor c = database.getNotes();
-    if(c.moveToFirst())
-      sampleRetrieve(c);
-  }
+ }
 
   @Override
   public void onClick(View v) {
@@ -51,11 +43,6 @@ public class HomeActivity extends Activity implements OnClickListener {
 		startActivity(new Intent(HomeActivity.this, AboutActivity.class));
 		break;
 	}
-  }
-  
-  public void sampleRetrieve(Cursor c) {
-	Toast.makeText(this, c.getString(1) + "\n" + c.getString(2),
-		Toast.LENGTH_LONG).show();
   }
   
 }

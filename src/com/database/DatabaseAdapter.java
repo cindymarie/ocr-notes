@@ -6,13 +6,18 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Database for PLUG Notes
+ * Two tables, subject and note: a subject can contain several notes, a note can
+ * only be in one subject
  * TODO Create CRUD methods
  */
 public class DatabaseAdapter {
 
+  private static final String TAG = "DBHelper";
+  
   /* Columns for Subjects Table */
   public static final String KEY_TABLE_ID = "_id";
   public static final String KEY_TABLE_TITLE = "title";
@@ -22,8 +27,6 @@ public class DatabaseAdapter {
   public static final String KEY_NOTE_TITLE = "title";
   public static final String KEY_NOTE_CONTENT = "content";
   public static final String KEY_NOTE_SUBJECT = "subject_id";
-  private static final String TAG = "DBHelper";
-  
   public static final String DATABASE_NAME = "plug_database";
   public static final String DATABASE_TABLE_NOTE = "notes";
   public static final String DATABASE_TABLE_SUBJECT = "subjects";
@@ -72,28 +75,33 @@ public class DatabaseAdapter {
 	  onCreate(db);
 	}
 	
+	/** SQLite for Android 2.1 and legacy does not support foreign keys */
+	/*
 	@Override
 	public void onOpen(SQLiteDatabase db)
 	{
 	  super.onOpen(db);
 	  if (!db.isReadOnly())
 	  {
+	  
 	    // Enable foreign key constraints
 	    db.execSQL("PRAGMA foreign_keys=ON;");
 	  }
-	}
-	
+	}*/
   }
   
   public DatabaseAdapter open () throws SQLException {
+	Log.i(TAG, "Opening PLUG database...");
 	plugDB = DBHelper.getWritableDatabase();
 	return this;
   }
   
   public void close() {
+	Log.i(TAG, "Closing PLUG database...");
 	DBHelper.close();
   }
   
+  /* Creating a note with a subject*/
   public long createNote(String title, String content, int subject_id) {
 	ContentValues cv = new ContentValues();
 	cv.put(KEY_NOTE_TITLE, title);
@@ -103,6 +111,7 @@ public class DatabaseAdapter {
 	return plugDB.insert(DATABASE_TABLE_NOTE, null, cv); 
   }  
   
+  /* Creating a note without a subject */
   public long createNote(String title, String content) {
 	ContentValues cv = new ContentValues();
 	cv.put(KEY_NOTE_TITLE, title);
