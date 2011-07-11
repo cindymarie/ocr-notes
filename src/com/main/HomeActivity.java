@@ -12,6 +12,7 @@ import com.database.DatabaseAdapter;
 
 /**
  * HomeActivity that handles all key presses during home view 
+ * 
  * TODO Implement all onClick features
  */
 public class HomeActivity extends Activity implements OnClickListener {
@@ -30,6 +31,8 @@ public class HomeActivity extends Activity implements OnClickListener {
     captureNote.setOnClickListener(this);
     View aboutButton = findViewById(R.id.home_about);
     aboutButton.setOnClickListener(this);
+    View viewNotes = findViewById(R.id.home_myNotebook);
+    viewNotes.setOnClickListener(this);
     
  }
 
@@ -41,6 +44,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		break;
 	  case R.id.home_about:
 		startActivity(new Intent(HomeActivity.this, AboutActivity.class));
+		break;
+	  case R.id.home_myNotebook:
+		startActivity(new Intent(HomeActivity.this, NotesListActivity.class));
 		break;
 	}
   }

@@ -12,6 +12,7 @@ import android.util.Log;
  * Database for PLUG Notes
  * Two tables, subject and note: a subject can contain several notes, a note can
  * only be in one subject
+ * 
  * TODO Create CRUD methods
  */
 public class DatabaseAdapter {
@@ -33,11 +34,13 @@ public class DatabaseAdapter {
   private static final int DATABASE_VERSION = 1;
   
   private static final String DATABASE_CREATE_SUBJECT = 
-	"CREATE TABLE subjects (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	"CREATE TABLE IF NOT EXISTS subjects " +
+	"(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 	"title TEXT NOT NULL);";
   
   private static final String DATABASE_CREATE_NOTE = 
-	"CREATE TABLE notes (_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+	"CREATE TABLE IF NOT EXISTS notes " +
+	"(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
 	"title TEXT NOT NULL, content TEXT NOT NULL, subject_id INTEGER);"; 
   
   private static final String[] DATABASE_CREATE_TABLES = {
@@ -120,17 +123,33 @@ public class DatabaseAdapter {
 	return plugDB.insert(DATABASE_TABLE_NOTE, null, cv); 
   } 
   
-  public Cursor getNotes() {
+  /* Retrieve all notes */
+  public Cursor getAllNotes() {
 	return plugDB.query(DATABASE_TABLE_NOTE, new String[] {
 		KEY_NOTE_ID, 
 		KEY_NOTE_TITLE, 
 		KEY_NOTE_CONTENT, 
 		KEY_NOTE_SUBJECT
-		},
+	},
 		null,
 		null,
 		null,
 		null,
+		null);
+  }
+  
+  /* Retrieve a single note */
+  public Cursor getNote(int id) {
+	return plugDB.query(DATABASE_TABLE_NOTE, new String[] {
+		KEY_NOTE_ID,
+		KEY_NOTE_TITLE,
+		KEY_NOTE_CONTENT,
+		KEY_NOTE_SUBJECT
+	}, 
+		KEY_NOTE_ID + "=" + id, 
+		null, 
+		null, 
+		null, 
 		null);
   }
 }
