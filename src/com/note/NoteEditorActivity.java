@@ -1,16 +1,20 @@
 package com.note;
 
+import keendy.projects.R;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.util.AttributeSet;
 import android.widget.EditText;
 
-public class NoteEditorActivity {
+public class NoteEditorActivity extends Activity {
 
   public static class PLUGEditText extends EditText {
+
 	private Rect mRect;
 	private Paint mPaint;
 
@@ -38,4 +42,11 @@ public class NoteEditorActivity {
 	  super.onDraw(canvas);
 	}
   } 
+  
+  public void onCreate(Bundle savedInstanceState) {
+	super.onCreate(savedInstanceState);
+	
+	setContentView(R.layout.note_editor);
+  }
+  
 }

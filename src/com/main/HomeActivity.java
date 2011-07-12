@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 
 import com.camera.CameraActivity;
 import com.database.DatabaseAdapter;
+import com.note.NoteEditorActivity;
 import com.note.NotesListActivity;
 
 /**
@@ -34,6 +35,8 @@ public class HomeActivity extends Activity implements OnClickListener {
     aboutButton.setOnClickListener(this);
     View viewNotes = findViewById(R.id.home_myNotebook);
     viewNotes.setOnClickListener(this);
+    View writeNote = findViewById(R.id.home_writeNote);
+    writeNote.setOnClickListener(this);
     
  }
 
@@ -48,6 +51,9 @@ public class HomeActivity extends Activity implements OnClickListener {
 		break;
 	  case R.id.home_myNotebook:
 		startActivity(new Intent(HomeActivity.this, NotesListActivity.class));
+		break;
+	  case R.id.home_writeNote:
+		startActivity(new Intent(HomeActivity.this, NoteEditorActivity.class));
 		break;
 	}
   }
