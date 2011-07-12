@@ -1,4 +1,4 @@
-package com.main;
+package com.note;
 
 import android.app.ListActivity;
 

@@ -156,5 +156,4 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
 		Log.i(TAG, "Focused!");
 	  }
 	};
-  
 }

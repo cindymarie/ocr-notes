@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 
 import com.camera.CameraActivity;
 import com.database.DatabaseAdapter;
+import com.note.NotesListActivity;
 
 /**
  * HomeActivity that handles all key presses during home view 
