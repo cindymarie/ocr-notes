@@ -38,6 +38,10 @@ public class HomeActivity extends Activity implements OnClickListener {
     View writeNote = findViewById(R.id.home_writeNote);
     writeNote.setOnClickListener(this);
     
+    database.open();
+    database.createNote("Untitled", "Sample Text");
+    database.close();
+	
  }
 
   @Override

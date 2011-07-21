@@ -85,22 +85,22 @@ public class CameraActivity extends Activity implements SurfaceHolder.Callback {
   @Override
   public void surfaceChanged(SurfaceHolder holder, int format, int w, int h) {
 
-	if (mPreviewRunning) {
-	  mCamera.stopPreview();
-	}
-
-	Camera.Parameters p = mCamera.getParameters();
-	p.setPreviewSize(w, h);
-	mCamera.setParameters(p);
-
-	try {
-	  mCamera.setPreviewDisplay(holder);
-	} catch (IOException e) {
-	  Log.e(TAG, "IOException lol");
-	}
-
-	mCamera.startPreview();
-	mPreviewRunning = true;
+//	if (mPreviewRunning) {
+//	  mCamera.stopPreview();
+//	}
+//
+//	Camera.Parameters p = mCamera.getParameters();
+//	p.setPreviewSize(w, h);
+//	mCamera.setParameters(p);
+//
+//	try {
+//	  mCamera.setPreviewDisplay(holder);
+//	} catch (IOException e) {
+//	  Log.e(TAG, "IOException lol");
+//	}
+//
+//	mCamera.startPreview();
+//	mPreviewRunning = true;
 
   }
 

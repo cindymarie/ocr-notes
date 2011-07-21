@@ -9,10 +9,17 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.EditText;
+
+import com.database.DatabaseAdapter;
 
 public class NoteEditorActivity extends Activity {
 
+  private static String TAG = "Note Editor";
+  
+  private EditText noteView;
+  
   public static class PLUGEditText extends EditText {
 
 	private Rect mRect;
@@ -34,9 +41,9 @@ public class NoteEditorActivity extends Activity {
 	  Rect r = mRect;
 	  Paint paint = mPaint;
 
+	  /* Drawing a line underneath the rows */
 	  for (int i = 0; i < count; i++) {
 		int baseline = getLineBounds(i, r);
-		
 		canvas.drawLine(r.left, baseline + 1, r.right, baseline + 1, paint);
 	  }
 	  super.onDraw(canvas);
@@ -47,6 +54,23 @@ public class NoteEditorActivity extends Activity {
 	super.onCreate(savedInstanceState);
 	
 	setContentView(R.layout.note_editor);
+	
+	noteView = (EditText) findViewById(R.id.note);
   }
   
+  @Override
+  public void onDestroy() {
+	super.onDestroy();
+ }
+  
+  private void save() {
+	if(!noteView.getText().toString().equals(""))
+	{
+	  DatabaseAdapter database = new DatabaseAdapter(this);
+	  database.open();
+	  database.createNote("Untitled", noteView.getText().toString());
+	  Log.i(TAG, "Note created, it contained " + noteView.getText().toString());
+	  database.close();
+	}
+  }
 }
